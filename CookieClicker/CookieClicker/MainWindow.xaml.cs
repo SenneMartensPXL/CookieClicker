@@ -29,12 +29,6 @@ namespace CookieClicker
             CookiesTimer.Interval = TimeSpan.FromMilliseconds(10);
             CookiesTimer.Start();
         }
-
-        private DispatcherTimer CursorTimer = new DispatcherTimer();
-        private DispatcherTimer GrandmaTimer = new DispatcherTimer();
-        private DispatcherTimer FarmTimer = new DispatcherTimer();
-        private DispatcherTimer MineTimer = new DispatcherTimer();
-        private DispatcherTimer FactoryTimer = new DispatcherTimer();
         private DispatcherTimer CookiesTimer = new DispatcherTimer();
 
         double cookies = 0;
@@ -45,11 +39,18 @@ namespace CookieClicker
         double minePrice = 12000;
         double factoryPrice = 130000;
 
-        double cursorValue = 1;
-        double grandmaValue = 1;
-        double farmValue = 1;
-        double mineValue = 1;
-        double factoryValue = 1;
+        double cursorPerSec = 0;
+        double grandmaPerSec = 0;
+        double farmPerSec = 0;
+        double minePerSec = 0;
+        double factoryPerSec = 0;
+        double totalPerSec = 0;
+
+        double cursorValue = 0.001;
+        double grandmaValue = 0.01;
+        double farmValue = 0.08;
+        double mineValue = 0.47;
+        double factoryValue = 2.6;
 
         int cursorAmount = 0;
         int grandmaAmount = 0;
@@ -61,16 +62,14 @@ namespace CookieClicker
         {
             cookies += 1;
             LblCookies.Content = Math.Round(cookies) + " Cookies";
+            ImgCookie.Height = 200;
+            ImgCookie.Width = 200;
+            ImgCookie.Margin = new Thickness(80, 10, 0, 0);
         }
 
-        private void ImgCursor_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void CookiesPerSec()
         {
-            
-        }
-
-        private void ImgGrandma_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            
+            totalPerSec = cursorPerSec + grandmaPerSec + farmPerSec + minePerSec + factoryPerSec;
         }
 
         private void WrapCursor_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -83,11 +82,14 @@ namespace CookieClicker
                 LblCursor.Content = cursorAmount;
                 LblCursorPrice.Content = Math.Round(cursorPrice);
 
+                cursorPerSec = cursorAmount * cursorValue * 100;
+                CookiesPerSec();
+
                 if (cursorAmount == 1)
                 {
-                    CursorTimer.Tick += new EventHandler(TimerCursor);
-                    CursorTimer.Interval = TimeSpan.FromMilliseconds(10);
-                    CursorTimer.Start();
+                    CookiesTimer.Tick += new EventHandler(TimerCookies);
+                    CookiesTimer.Interval = TimeSpan.FromMilliseconds(10);
+                    CookiesTimer.Start();
                 }
             }
         }
@@ -101,13 +103,9 @@ namespace CookieClicker
                 grandmaPrice *= 1.15;
                 LblGrandma.Content = grandmaAmount;
                 LblGrandmaPrice.Content = Math.Round(grandmaPrice);
-            }
 
-            if (grandmaAmount == 1)
-            {
-                GrandmaTimer.Tick += new EventHandler(TimerGrandma);
-                GrandmaTimer.Interval = TimeSpan.FromMilliseconds(10);
-                GrandmaTimer.Start();
+                grandmaPerSec = grandmaAmount * grandmaValue * 100;
+                CookiesPerSec();
             }
         }
 
@@ -120,13 +118,9 @@ namespace CookieClicker
                 farmPrice *= 1.15;
                 LblFarm.Content = farmAmount;
                 LblFarmPrice.Content = Math.Round(farmPrice);
-            }
 
-            if (farmAmount == 1)
-            {
-                FarmTimer.Tick += new EventHandler(TimerFarm);
-                FarmTimer.Interval = TimeSpan.FromMilliseconds(10);
-                FarmTimer.Start();
+                farmPerSec = farmAmount * farmValue * 100;
+                CookiesPerSec();
             }
         }
 
@@ -139,13 +133,9 @@ namespace CookieClicker
                 minePrice *= 1.15;
                 LblMine.Content = mineAmount;
                 LblMinePrice.Content = Math.Round(minePrice);
-            }
 
-            if (mineAmount == 1)
-            {
-                MineTimer.Tick += new EventHandler(TimerMine);
-                MineTimer.Interval = TimeSpan.FromMilliseconds(10);
-                MineTimer.Start();
+                minePerSec = mineAmount * mineValue * 100;
+                CookiesPerSec();
             }
         }
 
@@ -158,44 +148,89 @@ namespace CookieClicker
                 factoryPrice *= 1.15;
                 LblFactory.Content = factoryAmount;
                 LblFactoryPrice.Content = Math.Round(factoryPrice);
+
+                factoryPerSec = factoryAmount * factoryValue * 100;
+                CookiesPerSec();
             }
-
-            if (factoryAmount == 1)
-            {
-                FactoryTimer.Tick += new EventHandler(TimerFactory);
-                FactoryTimer.Interval = TimeSpan.FromMilliseconds(10);
-                FactoryTimer.Start();
-            }
-        }
-
-        private void TimerCursor(object sender, EventArgs e)
-        {
-            cookies += cursorAmount * 0.001;
-        }
-
-        private void TimerGrandma(object sender, EventArgs e)
-        {
-            cookies += grandmaAmount * 0.01;
-        }
-
-        private void TimerFarm(object sender, EventArgs e)
-        {
-            cookies += farmAmount * 0.08;
-        }
-
-        private void TimerMine(object sender, EventArgs e)
-        {
-            cookies += mineAmount * 0.47;
-        }
-
-        private void TimerFactory(object sender, EventArgs e)
-        {
-            cookies += factoryAmount * 2.60;
         }
 
         private void TimerCookies(object sender, EventArgs e)
         {
+            cookies += cursorAmount * cursorValue;
+            cookies += grandmaAmount * grandmaValue;
+            cookies += farmAmount * farmValue;
+            cookies += mineAmount * mineValue;
+            cookies += factoryAmount * factoryValue;
+
             LblCookies.Content = $"{Math.Round(cookies)} Cookies";
+            LblCookiesPerSec.Content = $"{totalPerSec} cps";
+        }
+
+        private void ImgCookie_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgCookie.Height = 190;
+            ImgCookie.Width = 190;
+            ImgCookie.Margin = new Thickness(85, 15, 5, 5);
+        }
+
+        private void WrapCursor_MouseEnter(object sender, MouseEventArgs e)
+        {
+            WrapCursor.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
+        }
+
+        private void WrapGrandma_MouseEnter(object sender, MouseEventArgs e)
+        {
+            WrapGrandma.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
+        }
+
+        private void WrapFarm_MouseEnter(object sender, MouseEventArgs e)
+        {
+            WrapFarm.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
+        }
+
+        private void WrapMine_MouseEnter(object sender, MouseEventArgs e)
+        {
+            WrapMine.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
+        }
+
+        private void WrapFactory_MouseEnter(object sender, MouseEventArgs e)
+        {
+            WrapFactory.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
+        }
+
+        private void WrapCursor_MouseLeave(object sender, MouseEventArgs e)
+        {
+            WrapCursor.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
+        }
+
+        private void WrapGrandma_MouseLeave(object sender, MouseEventArgs e)
+        {
+            WrapGrandma.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
+        }
+
+        private void WrapFarm_MouseLeave(object sender, MouseEventArgs e)
+        {
+            WrapFarm.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
+        }
+
+        private void WrapMine_MouseLeave(object sender, MouseEventArgs e)
+        {
+            WrapMine.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
+        }
+
+        private void WrapFactory_MouseLeave(object sender, MouseEventArgs e)
+        {
+            WrapFactory.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
+        }
+
+        private void ImgCookie_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void ImgCookie_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }
