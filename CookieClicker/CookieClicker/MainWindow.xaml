@@ -5,16 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CookieClicker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
-        <Image x:Name="ImgCookie" HorizontalAlignment="Center" Height="100" VerticalAlignment="Center" Width="100" Source="/asset/Cookie.png" MouseLeftButtonUp="ImgCookie_MouseLeftButtonUp"/>
-        <Label x:Name="LblCookies" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="308,120,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial Black"/>
-        <Image x:Name="ImgCursor" HorizontalAlignment="Left" Height="70" Margin="664,60,0,0" VerticalAlignment="Top" Width="70" Source="/asset/Cursor.png" MouseLeftButtonUp="ImgCursor_MouseLeftButtonUp"/>
-        <Image x:Name="ImgGrandma" HorizontalAlignment="Left" Height="70" Margin="664,164,0,0" VerticalAlignment="Top" Width="70" Source="/asset/Grandma.png" MouseLeftButtonUp="ImgGrandma_MouseLeftButtonUp"/>
-        <Label x:Name="LblCursor" HorizontalAlignment="Left" Margin="736,90,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Label x:Name="LblCursorPrice" HorizontalAlignment="Left" Margin="633,41,0,0" VerticalAlignment="Top" FontSize="12"/>
-        <Label x:Name="LblGrandma" HorizontalAlignment="Left" Margin="736,198,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Label x:Name="LblGrandmaPrice" HorizontalAlignment="Left" Margin="633,140,0,0" VerticalAlignment="Top" FontSize="12"/>
-
+        <WrapPanel>
+            <StackPanel Height="435" Width="400">
+                <Label x:Name="LblCookies" Content="0 Cookies" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="100,60,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial Black"/>
+                <Image x:Name="ImgCookie" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="/asset/Cookie.png" MouseLeftButtonUp="ImgCookie_MouseLeftButtonUp" Margin="80,10,0,0"/>
+            </StackPanel>
+            <StackPanel Width="300">
+                <WrapPanel>
+                    <Image x:Name="ImgStore" Source="/asset/Store.png" Width="80" Height="80"/>
+                    <Label Content="STORE" VerticalAlignment="Center" FontSize="50" FontFamily="Arial Black"/>
+                </WrapPanel>
+                <WrapPanel x:Name="WrapCursor" MouseLeftButtonUp="WrapCursor_MouseLeftButtonUp">
+                    <Image x:Name="ImgCursor" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="70" Source="/asset/Cursor.png" MouseLeftButtonUp="ImgCursor_MouseLeftButtonUp"/>
+                    <Label x:Name="LblCursorPrice" Width="100" Content="15" Margin="-10,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18"/>
+                    <Label x:Name="LblCursor" HorizontalContentAlignment="Right" Width="80" Content="0" Margin="50,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="40"/>
+                </WrapPanel>
+                <WrapPanel x:Name="WrapGrandma" MouseLeftButtonUp="WrapGrandma_MouseLeftButtonUp">
+                    <Image x:Name="ImgGrandma" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="70" Source="/asset/Grandma.png" MouseLeftButtonUp="ImgGrandma_MouseLeftButtonUp"/>
+                    <Label x:Name="LblGrandmaPrice" Width="100" Content="100" HorizontalAlignment="Left" Margin="-10,20,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <Label x:Name="LblGrandma" HorizontalContentAlignment="Right" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                </WrapPanel>
+                <WrapPanel x:Name="WrapFarm" MouseLeftButtonUp="WrapFarm_MouseLeftButtonUp">
+                    <Image x:Name="ImgFarm" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="70" Source="/asset/Farm.png" MouseLeftButtonUp="ImgGrandma_MouseLeftButtonUp"/>
+                    <Label x:Name="LblFarmPrice" Width="100" Content="1,100" HorizontalAlignment="Left" Margin="-10,20,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <Label x:Name="LblFarm" HorizontalContentAlignment="Right" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                </WrapPanel>
+                <WrapPanel x:Name="WrapMine" MouseLeftButtonUp="WrapMine_MouseLeftButtonUp">
+                    <Image x:Name="ImgMine" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="70" Source="/asset/mine.png" MouseLeftButtonUp="ImgGrandma_MouseLeftButtonUp"/>
+                    <Label x:Name="LblMinePrice" Width="100" Content="12,000" HorizontalAlignment="Left" Margin="-10,20,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <Label x:Name="LblMine" HorizontalContentAlignment="Right" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                </WrapPanel>
+                <WrapPanel x:Name="WrapFactory" MouseLeftButtonUp="WrapFactory_MouseLeftButtonUp">
+                    <Image x:Name="ImgFactory" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="70" Source="/asset/Factory.png" MouseLeftButtonUp="ImgGrandma_MouseLeftButtonUp"/>
+                    <Label x:Name="LblFactoryPrice" Width="100" Content="130,000" HorizontalAlignment="Left" Margin="-10,20,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <Label x:Name="LblFactory" HorizontalContentAlignment="Right" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                </WrapPanel>
+            </StackPanel>
+        </WrapPanel>
     </Grid>
 </Window>
