@@ -173,62 +173,12 @@ namespace CookieClicker
             ImgCookie.Margin = new Thickness(85, 15, 5, 5);
         }
 
-        private void WrapCursor_MouseEnter(object sender, MouseEventArgs e)
-        {
-            WrapCursor.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
-        }
-
-        private void WrapGrandma_MouseEnter(object sender, MouseEventArgs e)
-        {
-            WrapGrandma.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
-        }
-
-        private void WrapFarm_MouseEnter(object sender, MouseEventArgs e)
-        {
-            WrapFarm.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
-        }
-
-        private void WrapMine_MouseEnter(object sender, MouseEventArgs e)
-        {
-            WrapMine.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
-        }
-
-        private void WrapFactory_MouseEnter(object sender, MouseEventArgs e)
-        {
-            WrapFactory.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#28C2FF"));
-        }
-
-        private void WrapCursor_MouseLeave(object sender, MouseEventArgs e)
-        {
-            WrapCursor.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
-        }
-
-        private void WrapGrandma_MouseLeave(object sender, MouseEventArgs e)
-        {
-            WrapGrandma.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
-        }
-
-        private void WrapFarm_MouseLeave(object sender, MouseEventArgs e)
-        {
-            WrapFarm.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
-        }
-
-        private void WrapMine_MouseLeave(object sender, MouseEventArgs e)
-        {
-            WrapMine.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
-        }
-
-        private void WrapFactory_MouseLeave(object sender, MouseEventArgs e)
-        {
-            WrapFactory.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#60AFFF"));
-        }
-
-        private void ImgCookie_MouseEnter(object sender, MouseEventArgs e)
+        private void MouseEnter(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Hand;
         }
 
-        private void ImgCookie_MouseLeave(object sender, MouseEventArgs e)
+        private void MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
         }

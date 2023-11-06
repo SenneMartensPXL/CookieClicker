@@ -6,11 +6,14 @@
         xmlns:local="clr-namespace:CookieClicker"
         mc:Ignorable="d"
         Title="MainWindow" Height="510" Width="800">
-    <Grid Background="#3066BE">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/asset/Background.jpeg"/>
+        </Grid.Background>
         <WrapPanel>
             <StackPanel Height="455" Width="480" HorizontalAlignment="Left">
                 <Label x:Name="LblCookies" Content="0 Cookies" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="100,60,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial Black"/>
-                <Image x:Name="ImgCookie" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="/asset/Cookie.png" MouseLeftButtonUp="ImgCookie_MouseLeftButtonUp" Margin="80,10,0,0" MouseLeftButtonDown="ImgCookie_MouseLeftButtonDown" MouseEnter="ImgCookie_MouseEnter" MouseLeave="ImgCookie_MouseLeave"/>
+                <Image x:Name="ImgCookie" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="/asset/Cookie.png" MouseLeftButtonUp="ImgCookie_MouseLeftButtonUp" Margin="80,10,0,0" MouseLeftButtonDown="ImgCookie_MouseLeftButtonDown" MouseEnter="MouseEnter" MouseLeave="MouseLeave"/>
                 <Label x:Name="LblCookiesPerSec" Content="0 cps" FontSize="20" HorizontalAlignment="Center" Margin="0,0,110,0"/>
                 <WrapPanel Margin="0,50,0,0">
                     <Image x:Name="ImgUpgradeCursor" Source="/asset/Green.png" Height="50" Width="50" Margin="10"/>
@@ -20,35 +23,70 @@
                     <Image x:Name="ImgUpgradeFactory" Source="/asset/purple.png" Height="50" Width="50" Margin="10"/>
                 </WrapPanel>
             </StackPanel>
-            <StackPanel Width="300" Height="500" Background="#3066BE" HorizontalAlignment="Right">
+            <StackPanel Width="300" Height="500" HorizontalAlignment="Right">
                 <WrapPanel Margin="0,10,0,5">
                     <Image x:Name="ImgStore" Source="/asset/Store.png" Width="80" Height="80" Margin="5,0"/>
                     <Label Content="STORE" VerticalAlignment="Center" FontSize="50" FontFamily="Arial Black"/>
                 </WrapPanel>
-                <WrapPanel x:Name="WrapCursor" MouseLeftButtonUp="WrapCursor_MouseLeftButtonUp" Background="#60AFFF" Margin="0,0,0,5" MouseEnter="WrapCursor_MouseEnter" MouseLeave="WrapCursor_MouseLeave">
+                <WrapPanel x:Name="WrapCursor" MouseLeftButtonUp="WrapCursor_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnter" MouseLeave="MouseLeave">
+                    <WrapPanel.Background>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Image Source="/asset/sand.jpg"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </WrapPanel.Background>
                     <Image x:Name="ImgCursor" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Cursor.png"/>
-                    <Label x:Name="LblCursorPrice" Width="100" Content="15" Margin="-10,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18"/>
-                    <Label x:Name="LblCursor" HorizontalContentAlignment="Right" Width="80" Content="0" Margin="50,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="40"/>
+                    <Label x:Name="LblCursorPrice" Width="100" Content="15" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                    <Label x:Name="LblCursor" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="50,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="40"/>
                 </WrapPanel>
-                <WrapPanel x:Name="WrapGrandma" MouseLeftButtonUp="WrapGrandma_MouseLeftButtonUp" Background="#60AFFF" Margin="0,0,0,5" MouseEnter="WrapGrandma_MouseEnter" MouseLeave="WrapGrandma_MouseLeave">
+                <WrapPanel x:Name="WrapGrandma" MouseLeftButtonUp="WrapGrandma_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnter" MouseLeave="MouseLeave">
+                    <WrapPanel.Background>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Image Source="/asset/sand.jpg"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </WrapPanel.Background>
                     <Image x:Name="ImgGrandma" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Margin="5,0" Width="70" Source="/asset/Grandma.png"/>
-                    <Label x:Name="LblGrandmaPrice" Width="100" Content="100" HorizontalAlignment="Left" Margin="-10,20,0,0" VerticalAlignment="Top" FontSize="18"/>
-                    <Label x:Name="LblGrandma" HorizontalContentAlignment="Right" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                    <Label x:Name="LblGrandmaPrice" Width="100" Content="100" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                    <Label x:Name="LblGrandma" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
                 </WrapPanel>
-                <WrapPanel x:Name="WrapFarm" MouseLeftButtonUp="WrapFarm_MouseLeftButtonUp" Background="#60AFFF" Margin="0,0,0,5" MouseEnter="WrapFarm_MouseEnter" MouseLeave="WrapFarm_MouseLeave">
+                <WrapPanel x:Name="WrapFarm" MouseLeftButtonUp="WrapFarm_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnter" MouseLeave="MouseLeave">
+                    <WrapPanel.Background>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Image Source="/asset/sand.jpg"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </WrapPanel.Background>
                     <Image x:Name="ImgFarm" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Margin="5,0" Width="70" Source="/asset/Farm.png"/>
-                    <Label x:Name="LblFarmPrice" Width="100" Content="1,100" HorizontalAlignment="Left" Margin="-10,20,0,0" VerticalAlignment="Top" FontSize="18"/>
-                    <Label x:Name="LblFarm" HorizontalContentAlignment="Right" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                    <Label x:Name="LblFarmPrice" Width="100" Content="1,100" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                    <Label x:Name="LblFarm" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
                 </WrapPanel>
-                <WrapPanel x:Name="WrapMine" MouseLeftButtonUp="WrapMine_MouseLeftButtonUp" Background="#60AFFF" Margin="0,0,0,5" MouseEnter="WrapMine_MouseEnter" MouseLeave="WrapMine_MouseLeave">
+                <WrapPanel x:Name="WrapMine" MouseLeftButtonUp="WrapMine_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnter" MouseLeave="MouseLeave">
+                    <WrapPanel.Background>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Image Source="/asset/sand.jpg"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </WrapPanel.Background>
                     <Image x:Name="ImgMine" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/mine.png"/>
-                    <Label x:Name="LblMinePrice" Width="100" Content="12,000" HorizontalAlignment="Left" Margin="-10,20,0,0" VerticalAlignment="Top" FontSize="18"/>
-                    <Label x:Name="LblMine" HorizontalContentAlignment="Right" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                    <Label x:Name="LblMinePrice" Width="100" Content="12,000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                    <Label x:Name="LblMine" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
                 </WrapPanel>
-                <WrapPanel x:Name="WrapFactory" MouseLeftButtonUp="WrapFactory_MouseLeftButtonUp" Background="#60AFFF" MouseEnter="WrapFactory_MouseEnter" MouseLeave="WrapFactory_MouseLeave">
+                <WrapPanel x:Name="WrapFactory" MouseLeftButtonUp="WrapFactory_MouseLeftButtonUp" MouseEnter="MouseEnter" MouseLeave="_MouseLeave">
+                    <WrapPanel.Background>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Image Source="/asset/sand.jpg"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </WrapPanel.Background>
                     <Image x:Name="ImgFactory" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Factory.png"/>
-                    <Label x:Name="LblFactoryPrice" Width="100" Content="130,000" HorizontalAlignment="Left" Margin="-10,20,0,0" VerticalAlignment="Top" FontSize="18"/>
-                    <Label x:Name="LblFactory" HorizontalContentAlignment="Right" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                    <Label x:Name="LblFactoryPrice" Width="100" Content="130,000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                    <Label x:Name="LblFactory" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="40"/>
                 </WrapPanel>
             </StackPanel>
         </WrapPanel>
