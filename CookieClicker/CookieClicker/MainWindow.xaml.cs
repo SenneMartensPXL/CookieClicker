@@ -26,7 +26,7 @@ namespace CookieClicker
         {
             InitializeComponent();
             CookiesTimer.Tick += new EventHandler(TimerCookies);
-            CookiesTimer.Interval = TimeSpan.FromMilliseconds(10);
+            CookiesTimer.Interval = TimeSpan.FromMilliseconds(1000);
             CookiesTimer.Start();
         }
         private DispatcherTimer CookiesTimer = new DispatcherTimer();
@@ -51,6 +51,12 @@ namespace CookieClicker
         double farmValue = 0.08;
         double mineValue = 0.47;
         double factoryValue = 2.6;
+
+        double cursorValueSec = 0.1;
+        double grandmaValueSec = 1;
+        double farmValueSec = 8;
+        double mineValueSec = 47;
+        double factoryValueSec = 260;
 
         int cursorAmount = 0;
         int grandmaAmount = 0;
@@ -156,11 +162,11 @@ namespace CookieClicker
 
         private void TimerCookies(object sender, EventArgs e)
         {
-            cookies += cursorAmount * cursorValue;
-            cookies += grandmaAmount * grandmaValue;
-            cookies += farmAmount * farmValue;
-            cookies += mineAmount * mineValue;
-            cookies += factoryAmount * factoryValue;
+            cookies += cursorAmount * cursorValueSec;
+            cookies += grandmaAmount * grandmaValueSec;
+            cookies += farmAmount * farmValueSec;
+            cookies += mineAmount * mineValueSec;
+            cookies += factoryAmount * factoryValueSec;
 
             LblCookies.Content = $"{Math.Round(cookies)} Cookies";
             LblCookiesPerSec.Content = $"{totalPerSec} cps";
