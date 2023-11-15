@@ -136,5 +136,22 @@
   <ItemGroup>
     <Resource Include="asset\sand.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="asset\Kitchen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="asset\grandma_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="asset\grandma action.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="asset\farm_background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="asset\farmer.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

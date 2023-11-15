@@ -25,9 +25,6 @@ namespace CookieClicker
         public MainWindow()
         {
             InitializeComponent();
-            CookiesTimer.Tick += new EventHandler(TimerCookies);
-            CookiesTimer.Interval = TimeSpan.FromMilliseconds(1000);
-            CookiesTimer.Start();
         }
         private DispatcherTimer CookiesTimer = new DispatcherTimer();
 
@@ -90,13 +87,6 @@ namespace CookieClicker
 
                 cursorPerSec = cursorAmount * cursorValue * 100;
                 CookiesPerSec();
-
-                if (cursorAmount == 1)
-                {
-                    CookiesTimer.Tick += new EventHandler(TimerCookies);
-                    CookiesTimer.Interval = TimeSpan.FromMilliseconds(10);
-                    CookiesTimer.Start();
-                }
             }
         }
 
@@ -104,6 +94,7 @@ namespace CookieClicker
         {
             if (cookies >= grandmaPrice)
             {
+                
                 cookies -= grandmaPrice;
                 grandmaAmount += 1;
                 grandmaPrice *= 1.15;
@@ -112,6 +103,43 @@ namespace CookieClicker
 
                 grandmaPerSec = grandmaAmount * grandmaValue * 100;
                 CookiesPerSec();
+
+                switch (grandmaAmount)
+                {
+                    case 1:
+                        WrapGrandmaAction.Visibility = Visibility.Visible;
+                        Grandma1.Visibility = Visibility.Visible;
+                        break;
+                    case 2:
+                        Grandma2.Visibility = Visibility.Visible;
+                        break;
+                    case 3:
+                        Grandma3.Visibility = Visibility.Visible;
+                        break;
+                    case 4:
+                        Grandma4.Visibility = Visibility.Visible;
+                        break;
+                    case 5:
+                        Grandma5.Visibility = Visibility.Visible;
+                        break;
+                    case 6:
+                        Grandma6.Visibility = Visibility.Visible;
+                        break;
+                    case 7:
+                        Grandma7.Visibility = Visibility.Visible;
+                        break;
+                    case 8:
+                        Grandma8.Visibility = Visibility.Visible;
+                        break;
+                    case 9:
+                        Grandma9.Visibility = Visibility.Visible;
+                        break;
+                    case 10:
+                        Grandma10.Visibility = Visibility.Visible;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -127,6 +155,43 @@ namespace CookieClicker
 
                 farmPerSec = farmAmount * farmValue * 100;
                 CookiesPerSec();
+
+                switch (farmAmount)
+                {
+                    case 1:
+                        Farmer1.Visibility = Visibility.Visible;
+                        WrapFarmAction.Visibility = Visibility.Visible;
+                        break;
+                    case 2:
+                        Farmer2.Visibility = Visibility.Visible;
+                        break;
+                    case 3:
+                        Farmer3.Visibility = Visibility.Visible;
+                        break;
+                    case 4:
+                        Farmer4.Visibility = Visibility.Visible;
+                        break;
+                    case 5:
+                        Farmer5.Visibility = Visibility.Visible;
+                        break;
+                    case 6:
+                        Farmer6.Visibility = Visibility.Visible;
+                        break;
+                    case 7:
+                        Farmer7.Visibility = Visibility.Visible;
+                        break;
+                    case 8:
+                        Farmer8.Visibility = Visibility.Visible;
+                        break;
+                    case 9:
+                        Farmer9.Visibility = Visibility.Visible;
+                        break;
+                    case 10:
+                        Farmer10.Visibility = Visibility.Visible;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -162,11 +227,11 @@ namespace CookieClicker
 
         private void TimerCookies(object sender, EventArgs e)
         {
-            cookies += cursorAmount * cursorValueSec;
-            cookies += grandmaAmount * grandmaValueSec;
-            cookies += farmAmount * farmValueSec;
-            cookies += mineAmount * mineValueSec;
-            cookies += factoryAmount * factoryValueSec;
+            cookies += cursorAmount * cursorValue;
+            cookies += grandmaAmount * grandmaValue;
+            cookies += farmAmount * farmValue;
+            cookies += mineAmount * mineValue;
+            cookies += factoryAmount * factoryValue;
 
             LblCookies.Content = $"{Math.Round(cookies)} Cookies";
             LblCookiesPerSec.Content = $"{totalPerSec} cps";
@@ -187,6 +252,13 @@ namespace CookieClicker
         private void MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            CookiesTimer.Tick += new EventHandler(TimerCookies);
+            CookiesTimer.Interval = TimeSpan.FromMilliseconds(10);
+            CookiesTimer.Start();
         }
     }
 }
