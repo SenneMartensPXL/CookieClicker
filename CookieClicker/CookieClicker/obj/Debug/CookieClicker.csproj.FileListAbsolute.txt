@@ -31,3 +31,4 @@ C:\Users\Senne Martens\Documents\GitHub\CookieClicker\CookieClicker\CookieClicke
 C:\Users\Senne Martens\Documents\GitHub\CookieClicker\CookieClicker\CookieClicker\obj\Debug\CookieClicker.exe
 C:\Users\Senne Martens\Documents\GitHub\CookieClicker\CookieClicker\CookieClicker\obj\Debug\CookieClicker.pdb
 C:\Users\Senne Martens\Documents\GitHub\CookieClicker\CookieClicker\CookieClicker\bin\Debug\asset\farm_background.jpg
+C:\Users\12201306\Documents\2023-2024\WPL\CookieClicker\CookieClicker\CookieClicker\CookieClicker\bin\Debug\asset\farm_background.jpg

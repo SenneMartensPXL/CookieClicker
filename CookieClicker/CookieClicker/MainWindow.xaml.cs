@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,6 +27,7 @@ namespace CookieClicker
         {
             InitializeComponent();
         }
+
         private DispatcherTimer CookiesTimer = new DispatcherTimer();
 
         double cookies = 0;
@@ -103,43 +105,6 @@ namespace CookieClicker
 
                 grandmaPerSec = grandmaAmount * grandmaValue * 100;
                 CookiesPerSec();
-
-                switch (grandmaAmount)
-                {
-                    case 1:
-                        WrapGrandmaAction.Visibility = Visibility.Visible;
-                        Grandma1.Visibility = Visibility.Visible;
-                        break;
-                    case 2:
-                        Grandma2.Visibility = Visibility.Visible;
-                        break;
-                    case 3:
-                        Grandma3.Visibility = Visibility.Visible;
-                        break;
-                    case 4:
-                        Grandma4.Visibility = Visibility.Visible;
-                        break;
-                    case 5:
-                        Grandma5.Visibility = Visibility.Visible;
-                        break;
-                    case 6:
-                        Grandma6.Visibility = Visibility.Visible;
-                        break;
-                    case 7:
-                        Grandma7.Visibility = Visibility.Visible;
-                        break;
-                    case 8:
-                        Grandma8.Visibility = Visibility.Visible;
-                        break;
-                    case 9:
-                        Grandma9.Visibility = Visibility.Visible;
-                        break;
-                    case 10:
-                        Grandma10.Visibility = Visibility.Visible;
-                        break;
-                    default:
-                        break;
-                }
             }
         }
 
@@ -155,43 +120,6 @@ namespace CookieClicker
 
                 farmPerSec = farmAmount * farmValue * 100;
                 CookiesPerSec();
-
-                switch (farmAmount)
-                {
-                    case 1:
-                        Farmer1.Visibility = Visibility.Visible;
-                        WrapFarmAction.Visibility = Visibility.Visible;
-                        break;
-                    case 2:
-                        Farmer2.Visibility = Visibility.Visible;
-                        break;
-                    case 3:
-                        Farmer3.Visibility = Visibility.Visible;
-                        break;
-                    case 4:
-                        Farmer4.Visibility = Visibility.Visible;
-                        break;
-                    case 5:
-                        Farmer5.Visibility = Visibility.Visible;
-                        break;
-                    case 6:
-                        Farmer6.Visibility = Visibility.Visible;
-                        break;
-                    case 7:
-                        Farmer7.Visibility = Visibility.Visible;
-                        break;
-                    case 8:
-                        Farmer8.Visibility = Visibility.Visible;
-                        break;
-                    case 9:
-                        Farmer9.Visibility = Visibility.Visible;
-                        break;
-                    case 10:
-                        Farmer10.Visibility = Visibility.Visible;
-                        break;
-                    default:
-                        break;
-                }
             }
         }
 
@@ -244,12 +172,12 @@ namespace CookieClicker
             ImgCookie.Margin = new Thickness(85, 15, 5, 5);
         }
 
-        private void MouseEnter(object sender, MouseEventArgs e)
+        private void MouseEnterVoid(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Hand;
         }
 
-        private void MouseLeave(object sender, MouseEventArgs e)
+        private void MouseLeaveVoid(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
         }
@@ -259,6 +187,21 @@ namespace CookieClicker
             CookiesTimer.Tick += new EventHandler(TimerCookies);
             CookiesTimer.Interval = TimeSpan.FromMilliseconds(10);
             CookiesTimer.Start();
+        }
+
+        private void WrapBank_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void WrapWizard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void WrapTemple_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
