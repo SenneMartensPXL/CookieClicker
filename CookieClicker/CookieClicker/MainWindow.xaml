@@ -5,40 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CookieClicker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000" Loaded="Window_Loaded" ResizeMode="CanResize" MinWidth="1000" MinHeight="500">
-    <Grid>
+        Title="CookieClicker" Height="550" Width="1000" Loaded="Window_Loaded" ResizeMode="CanResize" MinWidth="1000" MinHeight="500" x:Name="mainWindow">
+    <Grid x:Name="grd">
         <Grid.Background>
             <ImageBrush ImageSource="/asset/Background.jpeg"/>
         </Grid.Background>
         <WrapPanel>
-            <StackPanel Height="455" Width="380" HorizontalAlignment="Left">
-                <Label x:Name="LblCookies" Content="0 Cookies" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="100,60,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial Black"/>
-                <Image x:Name="ImgCookie" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="/asset/Cookie.png" MouseLeftButtonUp="ImgCookie_MouseLeftButtonUp" Margin="80,10,0,0" MouseLeftButtonDown="ImgCookie_MouseLeftButtonDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
-                <Label x:Name="LblCookiesPerSec" Content="0 cps" FontSize="20" HorizontalAlignment="Center" Margin="0,0,110,0"/>
+            <StackPanel Height="520" Width="330" HorizontalAlignment="Left">
+                <Label x:Name="LblBakeryName" Content="PXL-Bakery" HorizontalAlignment="Center" Width="300" HorizontalContentAlignment="Center" Margin="0,20" VerticalAlignment="Top" FontSize="24" FontFamily="Arial Black" MouseDown="LblBakeryName_MouseDown"/>
+                <Label x:Name="LblCookies" Content="0 Cookies" HorizontalAlignment="Center" Width="300" HorizontalContentAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Top" FontSize="24" FontFamily="Arial Black"/>
+                <Image x:Name="ImgCookie" HorizontalAlignment="Center" Height="200" VerticalAlignment="Top" Width="200" Source="/asset/Cookie.png" MouseLeftButtonUp="ImgCookie_MouseLeftButtonUp" Margin="0,10,0,0" MouseLeftButtonDown="ImgCookie_MouseLeftButtonDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
+                <Label x:Name="LblCookiesPerSec" Content="0 cps" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                <Image x:Name="ImgQuests" Source="/asset/achievements.png" Width="50" Height="50" ToolTip="Granted achievements" Margin="20" MouseLeftButtonUp="ImgQuests_MouseLeftButtonUp"/>
             </StackPanel>
-            <StackPanel Width="300">
-                
-            </StackPanel>
-            <StackPanel Width="300" Height="500" HorizontalAlignment="Right">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" IsDeferredScrollingEnabled="True">
+                <StackPanel Width="300" Margin="10,0">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+                        <WrapPanel x:Name="WrapCursorAmount" Margin="10"/>
+                    </ScrollViewer>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+                        <WrapPanel x:Name="WrapGrandmaAmount" Margin="10"/>
+                    </ScrollViewer>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+                        <WrapPanel x:Name="WrapFarmAmount" Margin="10"/>
+                    </ScrollViewer>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+                        <WrapPanel x:Name="WrapMineAmount" Margin="10"/>
+                    </ScrollViewer>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+                        <WrapPanel x:Name="WrapFactoryAmount" Margin="10"/>
+                    </ScrollViewer>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+                        <WrapPanel x:Name="WrapBankAmount" Margin="10"/>
+                    </ScrollViewer>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+                        <WrapPanel x:Name="WrapTempleAmount" Margin="10"/>
+                    </ScrollViewer>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+                        <WrapPanel x:Name="WrapWizardAmount" Margin="10"/>
+                    </ScrollViewer>
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Width="300" Height="500" Margin="10,0" HorizontalAlignment="Right">
                 <WrapPanel Margin="0,10,0,5">
                     <Image x:Name="ImgStore" Source="/asset/Store.png" Width="80" Height="80" Margin="5,0"/>
                     <Label Content="STORE" VerticalAlignment="Center" FontSize="50" FontFamily="Arial Black"/>
                 </WrapPanel>
-				<ScrollViewer Height="370" IsDeferredScrollingEnabled="False">
+                <ScrollViewer Height="370" IsDeferredScrollingEnabled="True" VerticalScrollBarVisibility="Hidden">
                     <StackPanel>
-                        <WrapPanel x:Name="WrapCursor" MouseLeftButtonUp="WrapCursor_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
-                            <WrapPanel.Background>
-                                <VisualBrush>
-                                    <VisualBrush.Visual>
-                                        <Image Source="/asset/sand.jpg"/>
-                                    </VisualBrush.Visual>
-                                </VisualBrush>
-                            </WrapPanel.Background>
-                            <Image x:Name="ImgCursor" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Cursor.png"/>
-                            <Label x:Name="LblCursorPrice" Width="150" Content="15" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
-                            <Label x:Name="LblCursor" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="40"/>
+                        <WrapPanel x:Name="WrapUpdrades" Margin="5" Visibility="Visible">
+                            <Image x:Name="ImgCursorUpgrade" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Top" Width="30" Source="/asset/Cursor.png" MouseDown="ImgCursorUpgrade_MouseDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
+                            <Image x:Name="ImgGrandmaUpgrade" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Top" Width="30" Source="/asset/Grandma.png" MouseDown="ImgGrandmaUpgrade_MouseDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
+                            <Image x:Name="ImgFarmUpgrade" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Top" Width="30" Source="/asset/Farm.png" MouseDown="ImgFarmUpgrade_MouseDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
+                            <Image x:Name="ImgMineUpgrade" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Top" Width="30" Source="/asset/mine.png" MouseDown="ImgMineUpgrade_MouseDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
+                            <Image x:Name="ImgFactoryUpgrade" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Top" Width="30" Source="/asset/Factory.png" MouseDown="ImgFactoryUpgrade_MouseDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
+                            <Image x:Name="ImgBankUpgrade" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Top" Width="30" Source="/asset/bank.png" MouseDown="ImgBankUpgrade_MouseDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
+                            <Image x:Name="ImgTempleUpgrade" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Top" Width="30" Source="/asset/Temple.png" MouseDown="ImgTempleUpgrade_MouseDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
+                            <Image x:Name="ImgWizardUpgrade" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Top" Width="30" Source="/asset/Wizard.png" MouseDown="ImgWizardUpgrade_MouseDown" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid"/>
                         </WrapPanel>
-                        <WrapPanel x:Name="WrapGrandma" MouseLeftButtonUp="WrapGrandma_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
+                        <WrapPanel x:Name="WrapCursor" MouseLeftButtonUp="WrapCursor_MouseLeftButtonUp" Margin="5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
                             <WrapPanel.Background>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -46,11 +71,17 @@
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </WrapPanel.Background>
-                            <Image x:Name="ImgGrandma" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Margin="5,0" Width="70" Source="/asset/Grandma.png"/>
-                            <Label x:Name="LblGrandmaPrice" Width="150" Content="100" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
-                            <Label x:Name="LblGrandma" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="-20,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                            <StackPanel>
+                                <Label Content="Cursor" FontSize="16" HorizontalAlignment="Center"/>
+                                <Image x:Name="ImgCursor" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Cursor.png"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label x:Name="LblCursorPrice" Width="150" Content="15" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                                <Label x:Name="LblCursorAmountSec" Width="150" Content="0.1/sec" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                            <Label x:Name="LblCursor" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40"/>
                         </WrapPanel>
-                        <WrapPanel x:Name="WrapFarm" MouseLeftButtonUp="WrapFarm_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
+                        <WrapPanel x:Name="WrapGrandma" MouseLeftButtonUp="WrapGrandma_MouseLeftButtonUp" Margin="5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
                             <WrapPanel.Background>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -58,11 +89,17 @@
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </WrapPanel.Background>
-                            <Image x:Name="ImgFarm" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Margin="5,0" Width="70" Source="/asset/Farm.png"/>
-                            <Label x:Name="LblFarmPrice" Width="150" Content="1,100" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
-                            <Label x:Name="LblFarm" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="-20,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                            <StackPanel>
+                                <Label Content="Grandma" FontSize="16" HorizontalAlignment="Center"/>
+                                <Image x:Name="ImgGrandma" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Grandma.png"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label x:Name="LblGrandmaPrice" Width="150" Content="100" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                                <Label x:Name="LblGrandmaAmountSec" Width="150" Content="1/sec" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                            <Label x:Name="LblGrandma" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40"/>
                         </WrapPanel>
-                        <WrapPanel x:Name="WrapMine" MouseLeftButtonUp="WrapMine_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
+                        <WrapPanel x:Name="WrapFarm" MouseLeftButtonUp="WrapFarm_MouseLeftButtonUp" Margin="5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
                             <WrapPanel.Background>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -70,11 +107,17 @@
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </WrapPanel.Background>
-                            <Image x:Name="ImgMine" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/mine.png"/>
-                            <Label x:Name="LblMinePrice" Width="150" Content="12,000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
-                            <Label x:Name="LblMine" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="-20,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                            <StackPanel>
+                                <Label Content="Farm" FontSize="16" HorizontalAlignment="Center"/>
+                                <Image x:Name="ImgFarm" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Farm.png"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label x:Name="LblFarmPrice" Width="150" Content="1100" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                                <Label x:Name="LblFarmAmountSec" Width="150" Content="8/sec" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                            <Label x:Name="LblFarm" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40"/>
                         </WrapPanel>
-                        <WrapPanel x:Name="WrapFactory" MouseLeftButtonUp="WrapFactory_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
+                        <WrapPanel x:Name="WrapMine" MouseLeftButtonUp="WrapMine_MouseLeftButtonUp" Margin="5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
                             <WrapPanel.Background>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -82,11 +125,17 @@
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </WrapPanel.Background>
-                            <Image x:Name="ImgFactory" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Factory.png"/>
-                            <Label x:Name="LblFactoryPrice" Width="150" Content="130,000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
-                            <Label x:Name="LblFactory" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="-20,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                            <StackPanel>
+                                <Label Content="Mine" FontSize="16" HorizontalAlignment="Center"/>
+                                <Image x:Name="ImgMine" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Mine.png"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label x:Name="LblMinePrice" Width="150" Content="12000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                                <Label x:Name="LblMineAmountSec" Width="150" Content="47/sec" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                            <Label x:Name="LblMine" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40"/>
                         </WrapPanel>
-                        <WrapPanel x:Name="WrapBank" MouseLeftButtonUp="WrapBank_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
+                        <WrapPanel x:Name="WrapFactory" MouseLeftButtonUp="WrapFactory_MouseLeftButtonUp" Margin="5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
                             <WrapPanel.Background>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -94,11 +143,17 @@
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </WrapPanel.Background>
-                            <Image x:Name="ImgBank" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/bank.png"/>
-                            <Label x:Name="LblBankPrice" Width="150" Content="1,400,000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
-                            <Label x:Name="LblBank" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="-20,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                            <StackPanel>
+                                <Label Content="Factory" FontSize="16" HorizontalAlignment="Center"/>
+                                <Image x:Name="ImgFactory" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Factory.png"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label x:Name="LblFactoryPrice" Width="150" Content="130 000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                                <Label x:Name="LblFactoryAmountSec" Width="150" Content="260/sec" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                            <Label x:Name="LblFactory" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40"/>
                         </WrapPanel>
-						<WrapPanel x:Name="WrapTemple" MouseLeftButtonUp="WrapTemple_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
+                        <WrapPanel x:Name="WrapBank" MouseLeftButtonUp="WrapBank_MouseLeftButtonUp" Margin="5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
                             <WrapPanel.Background>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -106,11 +161,17 @@
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </WrapPanel.Background>
-                            <Image x:Name="ImgTemple" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/Temple.png"/>
-                            <Label x:Name="LblTemplePrice" Width="150" Content="20,000,000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
-                            <Label x:Name="LblTemple" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="-20,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                            <StackPanel>
+                                <Label Content="Bank" FontSize="16" HorizontalAlignment="Center"/>
+                                <Image x:Name="ImgBank" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Bank.png"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label x:Name="LblBankPrice" Width="150" Content="1 400 000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                                <Label x:Name="LblBankAmountSec" Width="150" Content="1 400/sec" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                            <Label x:Name="LblBank" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40"/>
                         </WrapPanel>
-						<WrapPanel x:Name="WrapWizard" MouseLeftButtonUp="WrapWizard_MouseLeftButtonUp" Margin="0,0,0,5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
+                        <WrapPanel x:Name="WrapTemple" MouseLeftButtonUp="WrapTemple_MouseLeftButtonUp" Margin="5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
                             <WrapPanel.Background>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -118,12 +179,36 @@
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </WrapPanel.Background>
-                            <Image x:Name="ImgWizard" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/Wizard.png"/>
-                            <Label x:Name="LblWizardPrice" Width="150" Content="330,000,000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
-                            <Label x:Name="LblWizard" HorizontalContentAlignment="Right" FontWeight="Bold" Width="80" Content="0" HorizontalAlignment="Right" Margin="-20,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                            <StackPanel>
+                                <Label Content="Temple" FontSize="16" HorizontalAlignment="Center"/>
+                                <Image x:Name="ImgTemple" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Temple.png"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label x:Name="LblTemplePrice" Width="150" Content="20 000 000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                                <Label x:Name="LblTempleAmountSec" Width="150" Content="260/sec" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                            <Label x:Name="LblTemple" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40"/>
+                        </WrapPanel>
+                        <WrapPanel x:Name="WrapWizard" MouseLeftButtonUp="WrapWizard_MouseLeftButtonUp" Margin="5" MouseEnter="MouseEnterVoid" MouseLeave="MouseLeaveVoid">
+                            <WrapPanel.Background>
+                                <VisualBrush>
+                                    <VisualBrush.Visual>
+                                        <Image Source="/asset/sand.jpg"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </WrapPanel.Background>
+                            <StackPanel>
+                                <Label Content="Wizard" FontSize="16" HorizontalAlignment="Center"/>
+                                <Image x:Name="ImgWizard" HorizontalAlignment="Left" Height="70" Margin="5,0" VerticalAlignment="Top" Width="70" Source="/asset/Wizard.png"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label x:Name="LblWizardPrice" Width="150" Content="330 000 000" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+                                <Label x:Name="LblWizardAmountSec" Width="150" Content="44 000/sec" FontWeight="Bold" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                            <Label x:Name="LblWizard" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Content="0" Margin="-20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40"/>
                         </WrapPanel>
                     </StackPanel>
-				</ScrollViewer>
+                </ScrollViewer>
             </StackPanel>
         </WrapPanel>
     </Grid>
